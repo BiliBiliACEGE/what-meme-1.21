@@ -35,5 +35,6 @@ public class WhatMeme implements ModInitializer {
 				MinecraftClient.getInstance().setScreen(new WhatMemeScreen());
 			}
 		});
+
 	}
 }
