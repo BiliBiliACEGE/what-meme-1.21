@@ -7,7 +7,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 
-public class SoundManager {
+public class ModSounds {
     public static final Identifier SOUND_ID = Identifier.of(WhatMeme.MOD_ID, "what-sound");
     public static final SoundEvent WHAT_SOUND_EVENT = SoundEvent.of(SOUND_ID);
 

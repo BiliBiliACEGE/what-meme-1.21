@@ -9,7 +9,7 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
-import static net.ace.whatmeme.sounds.SoundManager.registerSounds;
+import static net.ace.whatmeme.sounds.ModSounds.registerSounds;
 
 public class WhatMeme implements ModInitializer {
 	public static final String MOD_ID = "what-meme";

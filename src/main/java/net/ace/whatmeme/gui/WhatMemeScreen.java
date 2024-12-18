@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
-import static net.ace.whatmeme.sounds.SoundManager.WHAT_SOUND_EVENT;
+import static net.ace.whatmeme.sounds.ModSounds.WHAT_SOUND_EVENT;
 
 public class WhatMemeScreen extends Screen {
     private static final List<Identifier> IMAGES = List.of(
