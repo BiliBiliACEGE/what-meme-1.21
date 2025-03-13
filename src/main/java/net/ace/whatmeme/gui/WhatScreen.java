@@ -2,6 +2,8 @@ package net.ace.whatmeme.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.ace.WhatMeme;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -12,23 +14,33 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 
 import static net.ace.whatmeme.sounds.ModSounds.WHAT_SOUND_EVENT;
-
-public class WhatMemeScreen extends Screen {
+@Environment(EnvType.CLIENT)
+public class WhatScreen extends Screen {
     private static final List<Identifier> IMAGES = List.of(
             Identifier.of(WhatMeme.MOD_ID, "textures/gui/what.png")
     );
-    private static final int FRAME_DURATION = 260; // 每帧显示的时间（以tick为单位）
-    private int frameCounter = FRAME_DURATION;
+    private static final int DEFAULT_TICKS = 260; // 默认持续时间
+
+    // 实际使用的持续时间（默认值或指令传入值）
+    private final int totalDurationTicks;
+    private int remainingTicks;
     private int currentFrame = 0;
 
     private PositionedSoundInstance soundInstance;
     private boolean audioPlayed = false;
-
-    // 标志位，确保唯一实例
     private static boolean isScreenOpen = false;
 
-    public WhatMemeScreen() {
+    // 默认构造函数（用于非指令情况）
+    public WhatScreen() {
+        this(DEFAULT_TICKS); // 调用主构造函数并传入默认值
+    }
+
+    // 主构造函数（用于指令传入参数）
+    public WhatScreen(int durationTicks) {
         super(Text.of(""));
+        // 使用三元运算符确保最小持续时间
+        this.totalDurationTicks = Math.max(durationTicks, 10); // 至少10ticks
+        this.remainingTicks = this.totalDurationTicks;
     }
 
     @Override
@@ -58,10 +70,10 @@ public class WhatMemeScreen extends Screen {
                 audioPlayed = true;
             }
 
-            frameCounter--;
-            if (frameCounter <= 0) {
+            remainingTicks--;
+            if (remainingTicks <= 0) {
                 currentFrame++;
-                frameCounter = FRAME_DURATION;
+                remainingTicks = totalDurationTicks;
             }
         } else {
             // 动画结束，关闭屏幕
