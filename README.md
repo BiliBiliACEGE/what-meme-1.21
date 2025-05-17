@@ -1,6 +1,7 @@
 # What Meme Mod for Minecraft 1.21
 
-![Minecraft Logo](https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/minecraft-logo.svg)
+![icon](https://github.com/user-attachments/assets/7c8e862a-03b5-49ad-99a1-e0ab59c4ba94)
+
 
 ## 简介
 
