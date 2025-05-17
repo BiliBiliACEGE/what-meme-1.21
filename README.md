@@ -51,7 +51,6 @@ What Meme 是一个为 Minecraft 1.21 版本开发的趣味模组，灵感来源
 
 如有任何问题或建议，请通过以下方式联系我们：
 - GitHub Issues
-- 邮箱：support@whatmeme.com
 
 ## 特别感谢
 
